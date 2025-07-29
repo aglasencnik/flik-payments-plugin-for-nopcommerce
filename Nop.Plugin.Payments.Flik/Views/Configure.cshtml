@@ -21,6 +21,76 @@
 
                 <div class="form-group row">
                     <div class="col-md-4">
+                        <nop-label asp-for="Sandbox" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="Sandbox" />
+                        <span asp-validation-for="Sandbox"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="ApiKey" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="ApiKey" />
+                        <span asp-validation-for="ApiKey"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="SharedSecret" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="SharedSecret" />
+                        <span asp-validation-for="SharedSecret"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="PublicIntegrationKey" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="PublicIntegrationKey" />
+                        <span asp-validation-for="PublicIntegrationKey"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="ApiUsername" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="ApiUsername" />
+                        <span asp-validation-for="ApiUsername"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="ApiPassword" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="ApiPassword" />
+                        <span asp-validation-for="ApiPassword"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="UseSignature" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="UseSignature" />
+                        <span asp-validation-for="UseSignature"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
                         <nop-label asp-for="AdditionalFeePercentage" />
                     </div>
                     <div class="col-md-8">
@@ -50,7 +120,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-md-9 offset-md-3">
+                    <div class="col-md-9 offset-md-4">
                         <button type="submit" name="save" class="btn btn-primary">@T("Admin.Common.Save")</button>
                     </div>
                 </div>

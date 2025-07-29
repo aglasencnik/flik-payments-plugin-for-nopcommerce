@@ -30,6 +30,13 @@ public class ConfigurationFactory : IConfigurationFactory
         var model = new ConfigurationVm
         {
             Enabled = settings.Enabled,
+            Sandbox = settings.Sandbox,
+            ApiKey = settings.ApiKey,
+            SharedSecret = settings.SharedSecret,
+            PublicIntegrationKey = settings.PublicIntegrationKey,
+            ApiUsername = settings.ApiUsername,
+            ApiPassword = settings.ApiPassword,
+            UseSignature = settings.UseSignature,
             AdditionalFeePercentage = settings.AdditionalFeePercentage,
             AdditionalFee = settings.AdditionalFee,
             RemoveSettingsOnUninstall = settings.RemoveSettingsOnUninstall,
