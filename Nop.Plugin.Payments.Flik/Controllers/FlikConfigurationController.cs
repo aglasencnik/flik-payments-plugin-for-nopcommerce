@@ -14,7 +14,7 @@ namespace Nop.Plugin.Payments.Flik.Controllers;
 [AuthorizeAdmin]
 [Area(AreaNames.ADMIN)]
 [AutoValidateAntiforgeryToken]
-public class FlikConfigurationController : BaseController
+public class FlikConfigurationController : BasePaymentController
 {
     #region Fields
 

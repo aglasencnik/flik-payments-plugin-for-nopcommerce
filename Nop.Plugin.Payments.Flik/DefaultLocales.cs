@@ -9,6 +9,8 @@ public class DefaultLocales
 
     public const string BASE_LOCALE_ENDPOINT = "FlikPayments";
 
+    public const string PAYMENT_METHOD_DESCRIPTION = $"{BASE_LOCALE_ENDPOINT}.PaymentMethodDescription";
+
     #region Configuration
 
     public const string CONFIGURATION_INSTRUCTIONS = $"{BASE_LOCALE_ENDPOINT}.Configuration.Instructions";
@@ -39,6 +41,8 @@ public class DefaultLocales
     {
         return new Dictionary<string, string>
         {
+            [PAYMENT_METHOD_DESCRIPTION] = "Pay with Flik",
+
             // Configuration
             [CONFIGURATION_INSTRUCTIONS] = "Please configure the Flik Payments plugin settings below.<br />Ensure that you have the necessary API credentials and that your account is set up to accept payments.",
             [CONFIGURATION_ENABLE] = "Enable Flik Payments Plugin",

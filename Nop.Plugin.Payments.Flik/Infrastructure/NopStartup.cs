@@ -15,6 +15,7 @@ public class NopStartup : INopStartup
     {
         // Services
         services.AddScoped<IConfigurationService, ConfigurationService>();
+        services.AddScoped<IFlikPaymentProcessor, FlikPaymentProcessor>();
 
         // Factories
         services.AddScoped<IConfigurationFactory, ConfigurationFactory>();
