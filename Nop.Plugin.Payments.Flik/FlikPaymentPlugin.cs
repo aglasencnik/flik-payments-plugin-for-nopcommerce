@@ -4,6 +4,7 @@ using Nop.Core.Domain.Orders;
 using Nop.Plugin.Payments.Flik.Components;
 using Nop.Plugin.Payments.Flik.Services;
 using Nop.Services.Configuration;
+using Nop.Services.Directory;
 using Nop.Services.Localization;
 using Nop.Services.Payments;
 using Nop.Services.Plugins;
@@ -18,6 +19,8 @@ public class FlikPaymentPlugin : BasePlugin, IPaymentMethod
     private readonly ISettingService _settingService;
     private readonly ILocalizationService _localizationService;
     private readonly IFlikPaymentProcessor _flikPaymentProcessor;
+    private readonly ICountryService _countryService;
+    private readonly IPaymentPluginManager _paymentPluginManager;
 
     #endregion
 
@@ -26,12 +29,16 @@ public class FlikPaymentPlugin : BasePlugin, IPaymentMethod
     public FlikPaymentPlugin(IWebHelper webHelper,
         ISettingService settingService,
         ILocalizationService localizationService,
-        IFlikPaymentProcessor flikPaymentProcessor)
+        IFlikPaymentProcessor flikPaymentProcessor,
+        ICountryService countryService,
+        IPaymentPluginManager paymentPluginManager)
     {
         _webHelper = webHelper;
         _settingService = settingService;
         _localizationService = localizationService;
         _flikPaymentProcessor = flikPaymentProcessor;
+        _countryService = countryService;
+        _paymentPluginManager = paymentPluginManager;
     }
 
     #endregion
@@ -44,6 +51,14 @@ public class FlikPaymentPlugin : BasePlugin, IPaymentMethod
     {
         // Add localization resources
         await _localizationService.AddOrUpdateLocaleResourceAsync(DefaultLocales.GetPluginLocalesEn());
+
+        // Restrict usage to specific countries
+        var allowedCountryIds = (await _countryService.GetAllCountriesAsync())
+            .Where(x => !FlikPaymentDefaults.AllowedCountries.Contains(x.TwoLetterIsoCode))
+            .Select(x => x.Id)
+            .ToList();
+
+        await _paymentPluginManager.SaveRestrictedCountriesAsync(this, allowedCountryIds);
 
         await base.InstallAsync();
     }
