@@ -1,0 +1,60 @@
+@model ConfigurationVm
+@{
+    Layout = "_ConfigurePlugin";;
+}
+
+<form asp-controller="FlikPayments" asp-action="Configure" method="post">
+    <div class="cards-group">
+        <div class="card card-default">
+            <div class="card-body">
+                <p>@T(DefaultLocales.CONFIGURATION_INSTRUCTIONS)</p>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="Enabled" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="Enabled" />
+                        <span asp-validation-for="Enabled"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="AdditionalFeePercentage" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="AdditionalFeePercentage" />
+                        <span asp-validation-for="AdditionalFeePercentage"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="AdditionalFee" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="AdditionalFee" />
+                        <span asp-validation-for="AdditionalFee"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <nop-label asp-for="RemoveSettingsOnUninstall" />
+                    </div>
+                    <div class="col-md-8">
+                        <nop-editor asp-for="RemoveSettingsOnUninstall" />
+                        <span asp-validation-for="RemoveSettingsOnUninstall"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-9 offset-md-3">
+                        <button type="submit" name="save" class="btn btn-primary">@T("Admin.Common.Save")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
