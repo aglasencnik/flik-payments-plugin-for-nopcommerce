@@ -30,7 +30,9 @@ public class FlikPaymentProcessor : IFlikPaymentProcessor
     /// <inheritdoc />
     public Task<bool> HidePaymentMethodAsync(IList<ShoppingCartItem> cart)
     {
-        // TODO: Implement logic to determine if the payment method should be hidden based on the customer country
+        if (!_flikPaymentSettings.Enabled)
+            return Task.FromResult(true);
+
         return Task.FromResult(false);
     }
 
