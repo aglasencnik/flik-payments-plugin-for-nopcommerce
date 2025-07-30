@@ -18,5 +18,11 @@ public class RouteProvider : IRouteProvider
             pattern: "Admin/FlikPayments/Configure",
             defaults: new { controller = "FlikConfiguration", action = "Configure", area = AreaNames.ADMIN }
         );
+
+        endpointRouteBuilder.MapControllerRoute(
+            name: $"{_prefix}.Callback",
+            pattern: "Plugins/FlikPayments/Callback",
+            defaults: new { controller = "FlikWebhook", action = "WebhookHandler" }
+        );
     }
 }
