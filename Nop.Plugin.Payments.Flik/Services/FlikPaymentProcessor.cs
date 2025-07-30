@@ -1,4 +1,5 @@
 ﻿using Nop.Core.Domain.Orders;
+using Nop.Services.Orders;
 using Nop.Services.Payments;
 
 namespace Nop.Plugin.Payments.Flik.Services;
@@ -8,14 +9,18 @@ public class FlikPaymentProcessor : IFlikPaymentProcessor
 {
     #region Fields
 
-
+    private readonly FlikPaymentSettings _flikPaymentSettings;
+    private readonly IOrderTotalCalculationService _orderTotalCalculationService;
 
     #endregion
 
     #region Ctor
 
-    public FlikPaymentProcessor()
+    public FlikPaymentProcessor(FlikPaymentSettings flikPaymentSettings,
+        IOrderTotalCalculationService orderTotalCalculationService)
     {
+        _flikPaymentSettings = flikPaymentSettings;
+        _orderTotalCalculationService = orderTotalCalculationService;
     }
 
     #endregion
@@ -30,10 +35,10 @@ public class FlikPaymentProcessor : IFlikPaymentProcessor
     }
 
     /// <inheritdoc />
-    public Task<decimal> GetAdditionalHandlingFeeAsync(IList<ShoppingCartItem> cart)
+    public async Task<decimal> GetAdditionalHandlingFeeAsync(IList<ShoppingCartItem> cart)
     {
-        // TODO: Implement logic to calculate additional handling fee
-        return Task.FromResult(0m);
+        return await _orderTotalCalculationService.CalculatePaymentAdditionalFeeAsync(cart, 
+            _flikPaymentSettings.AdditionalFee, _flikPaymentSettings.AdditionalFeePercentage);
     }
 
     /// <inheritdoc />
