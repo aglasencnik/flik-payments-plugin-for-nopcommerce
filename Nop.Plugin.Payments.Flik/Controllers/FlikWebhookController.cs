@@ -10,15 +10,15 @@ public class FlikWebhookController : Controller
 {
     #region Fields
 
-    private readonly IFlikPaymentService _flikPaymentService;
+    private readonly IFlikPaymentProcessor _flikPaymentProcessor;
 
     #endregion
 
     #region Ctor
 
-    public FlikWebhookController(IFlikPaymentService flikPaymentService)
+    public FlikWebhookController(IFlikPaymentProcessor flikPaymentProcessor)
     {
-        _flikPaymentService = flikPaymentService;
+        _flikPaymentProcessor = flikPaymentProcessor;
     }
 
     #endregion
@@ -28,8 +28,8 @@ public class FlikWebhookController : Controller
     [HttpPost]
     public async Task<IActionResult> WebhookHandler()
     {
-        await _flikPaymentService.HandleWebhookCallbackAsync(Request);
-        return Ok();
+        await _flikPaymentProcessor.HandleWebhookCallbackAsync(Request);
+        return Ok("OK");
     }
 
     #endregion

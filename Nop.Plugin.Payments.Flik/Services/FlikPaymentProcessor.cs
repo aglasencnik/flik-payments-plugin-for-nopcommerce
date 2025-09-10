@@ -1,4 +1,5 @@
-﻿using Nop.Core.Domain.Orders;
+﻿using Microsoft.AspNetCore.Http;
+using Nop.Core.Domain.Orders;
 using Nop.Services.Orders;
 using Nop.Services.Payments;
 
@@ -47,6 +48,13 @@ public class FlikPaymentProcessor : IFlikPaymentProcessor
     public Task<RefundPaymentResult> RefundAsync(RefundPaymentRequest refundPaymentRequest)
     {
         throw new NotImplementedException();
+    }
+
+    /// <inheritdoc />
+    public Task HandleWebhookCallbackAsync(HttpRequest request)
+    {
+        // TODO: Implement the logic to handle webhook callbacks from Flik
+        return Task.CompletedTask;
     }
 
     #endregion

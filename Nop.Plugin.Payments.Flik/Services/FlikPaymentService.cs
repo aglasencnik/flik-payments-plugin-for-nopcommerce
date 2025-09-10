@@ -22,11 +22,7 @@ public class FlikPaymentService : IFlikPaymentService
 
     #region Methods
 
-    public Task HandleWebhookCallbackAsync(HttpRequest request)
-    {
-        // TODO: Implement the logic to handle webhook callbacks from Flik
-        throw new NotImplementedException();
-    }
+
 
     #endregion
 }

@@ -1,4 +1,5 @@
-﻿using Nop.Core.Domain.Orders;
+﻿using Microsoft.AspNetCore.Http;
+using Nop.Core.Domain.Orders;
 using Nop.Services.Payments;
 
 namespace Nop.Plugin.Payments.Flik.Services;
@@ -37,4 +38,11 @@ public interface IFlikPaymentProcessor
     /// A task that represents the asynchronous operation
     /// </returns>
     Task<RefundPaymentResult> RefundAsync(RefundPaymentRequest refundPaymentRequest);
+
+    /// <summary>
+    /// Handles the webhook callback from Flik
+    /// </summary>
+    /// <param name="request">Http request object</param>
+    /// <returns>A task that represents the asynchronous operation</returns>
+    Task HandleWebhookCallbackAsync(HttpRequest request);
 }
