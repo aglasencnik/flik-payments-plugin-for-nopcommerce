@@ -1,5 +1,7 @@
-﻿using Nop.Plugin.Payments.Flik.Models;
+﻿using Nop.Core.Domain.Payments;
+using Nop.Plugin.Payments.Flik.Models;
 using Nop.Services.Configuration;
+using Nop.Services.Payments;
 
 namespace Nop.Plugin.Payments.Flik.Services;
 
@@ -9,14 +11,17 @@ public class ConfigurationService : IConfigurationService
     #region Fields
 
     private readonly ISettingService _settingService;
+    private readonly IPaymentPluginManager _paymentPluginManager;
 
     #endregion
 
     #region Ctor
 
-    public ConfigurationService(ISettingService settingService)
+    public ConfigurationService(ISettingService settingService,
+        IPaymentPluginManager paymentPluginManager)
     {
         _settingService = settingService;
+        _paymentPluginManager = paymentPluginManager;
     }
 
     #endregion
@@ -42,6 +47,27 @@ public class ConfigurationService : IConfigurationService
 
         await _settingService.SaveSettingAsync(settings);
         await _settingService.ClearCacheAsync();
+
+        var paymentSettings = await _settingService.LoadSettingAsync<PaymentSettings>();
+        var pm = await _paymentPluginManager.LoadPluginBySystemNameAsync(FlikPaymentDefaults.SystemName);
+        if (_paymentPluginManager.IsPluginActive(pm))
+        {
+            if (!settings.Enabled)
+            {
+                // Mark as disabled
+                paymentSettings.ActivePaymentMethodSystemNames.Remove(pm.PluginDescriptor.SystemName);
+                await _settingService.SaveSettingAsync(paymentSettings);
+            }
+        }
+        else
+        {
+            if (settings.Enabled)
+            {
+                // Mark as enabled
+                paymentSettings.ActivePaymentMethodSystemNames.Add(pm.PluginDescriptor.SystemName);
+                await _settingService.SaveSettingAsync(paymentSettings);
+            }
+        }
     }
 
     #endregion
