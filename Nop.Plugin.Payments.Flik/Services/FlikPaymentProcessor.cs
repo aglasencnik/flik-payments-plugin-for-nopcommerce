@@ -45,6 +45,12 @@ public class FlikPaymentProcessor : IFlikPaymentProcessor
     }
 
     /// <inheritdoc />
+    public Task InitializePaymentProcessAsync(PostProcessPaymentRequest postProcessPaymentRequest)
+    {
+        throw new NotImplementedException();
+    }
+
+    /// <inheritdoc />
     public Task<RefundPaymentResult> RefundAsync(RefundPaymentRequest refundPaymentRequest)
     {
         throw new NotImplementedException();

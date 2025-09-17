@@ -93,9 +93,9 @@ public class FlikPaymentPlugin : BasePlugin, IPaymentMethod
         return Task.FromResult(new ProcessPaymentResult());
     }
 
-    public Task PostProcessPaymentAsync(PostProcessPaymentRequest postProcessPaymentRequest)
+    public async Task PostProcessPaymentAsync(PostProcessPaymentRequest postProcessPaymentRequest)
     {
-        return Task.CompletedTask;
+        await _flikPaymentProcessor.InitializePaymentProcessAsync(postProcessPaymentRequest);
     }
 
     public async Task<bool> HidePaymentMethodAsync(IList<ShoppingCartItem> cart)

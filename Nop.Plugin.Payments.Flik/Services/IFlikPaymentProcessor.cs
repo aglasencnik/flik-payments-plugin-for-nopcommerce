@@ -30,6 +30,13 @@ public interface IFlikPaymentProcessor
     Task<decimal> GetAdditionalHandlingFeeAsync(IList<ShoppingCartItem> cart);
 
     /// <summary>
+    /// Initializes payment process
+    /// </summary>
+    /// <param name="postProcessPaymentRequest">Post process payment request</param>
+    /// <returns>A task that represents the asynchronous operation</returns>
+    Task InitializePaymentProcessAsync(PostProcessPaymentRequest postProcessPaymentRequest);
+
+    /// <summary>
     /// Refunds a payment
     /// </summary>
     /// <param name="refundPaymentRequest">Request</param>
