@@ -62,7 +62,7 @@ public class DefaultLocales
     {
         return new Dictionary<string, string>
         {
-            [PAYMENT_METHOD_DESCRIPTION] = "Pay with Flik",
+            [PAYMENT_METHOD_DESCRIPTION] = "Pay with Flik (you’ll be redirected to complete payment securely).",
 
             // Configuration
             [CONFIGURATION_INSTRUCTIONS] = "Please configure the Flik Payments plugin settings below.<br />Ensure that you have the necessary API credentials and that your account is set up to accept payments.",
