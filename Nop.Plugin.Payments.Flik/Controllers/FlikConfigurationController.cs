@@ -46,7 +46,7 @@ public class FlikConfigurationController : BasePaymentController
     public async Task<IActionResult> Configure()
     {
         var model = await _configurationFactory.PrepareConfigurationModelAsync();
-        return View($"{FlikPaymentDefaults.ViewsPath}/Configure.cshtml", model);
+        return View($"{FlikPaymentDefaults.AdminViewsPath}/Configure.cshtml", model);
     }
 
     [HttpPost]
