@@ -53,12 +53,12 @@ public class FlikPaymentPlugin : BasePlugin, IPaymentMethod
         await _localizationService.AddOrUpdateLocaleResourceAsync(DefaultLocales.GetPluginLocalesEn());
 
         // Restrict usage to specific countries
-        var allowedCountryIds = (await _countryService.GetAllCountriesAsync())
+        var restrictedCountryIds = (await _countryService.GetAllCountriesAsync())
             .Where(x => !FlikPaymentDefaults.AllowedCountries.Contains(x.TwoLetterIsoCode))
             .Select(x => x.Id)
             .ToList();
 
-        await _paymentPluginManager.SaveRestrictedCountriesAsync(this, allowedCountryIds);
+        await _paymentPluginManager.SaveRestrictedCountriesAsync(this, restrictedCountryIds);
 
         await base.InstallAsync();
     }
