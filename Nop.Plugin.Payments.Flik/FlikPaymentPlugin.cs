@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Nop.Core;
 using Nop.Core.Domain.Orders;
-using Nop.Plugin.Payments.Flik.Components;
 using Nop.Plugin.Payments.Flik.Services;
 using Nop.Services.Configuration;
 using Nop.Services.Directory;
@@ -157,7 +156,7 @@ public class FlikPaymentPlugin : BasePlugin, IPaymentMethod
 
     public Type GetPublicViewComponent()
     {
-        return typeof(PaymentInfoViewComponent);
+        return null;
     }
 
     public async Task<string> GetPaymentMethodDescriptionAsync()
@@ -199,12 +198,12 @@ public class FlikPaymentPlugin : BasePlugin, IPaymentMethod
     /// <summary>
     /// Gets a payment method type
     /// </summary>
-    public PaymentMethodType PaymentMethodType => PaymentMethodType.Standard;
+    public PaymentMethodType PaymentMethodType => PaymentMethodType.Redirection;
 
     /// <summary>
     /// Gets a value indicating whether we should display a payment information page for this plugin
     /// </summary>
-    public bool SkipPaymentInfo => false;
+    public bool SkipPaymentInfo => true;
 
     #endregion
 }
