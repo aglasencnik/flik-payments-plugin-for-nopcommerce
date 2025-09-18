@@ -45,6 +45,11 @@ public class FlikPaymentSettings : ISettings
     public bool UseSignature { get; set; }
 
     /// <summary>
+    /// Gets or sets the description to appear to the customer in Flik.
+    /// </summary>
+    public string Description { get; set; }
+
+    /// <summary>
     /// Gets or sets whether the additional fee is in percentage.
     /// </summary>
     public bool AdditionalFeePercentage { get; set; }

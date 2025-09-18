@@ -41,6 +41,7 @@ public class ConfigurationService : IConfigurationService
         settings.ApiUsername = model.ApiUsername;
         settings.ApiPassword = model.ApiPassword;
         settings.UseSignature = model.UseSignature;
+        settings.Description = model.Description;
         settings.AdditionalFeePercentage = model.AdditionalFeePercentage;
         settings.AdditionalFee = model.AdditionalFee;
         settings.RemoveSettingsOnUninstall = model.RemoveSettingsOnUninstall;

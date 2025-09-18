@@ -47,6 +47,9 @@ public class DefaultLocales
 
     public const string CONFIGURATION_USE_SIGNATURE = $"{BASE_LOCALE_ENDPOINT}.Configuration.UseSignature";
     public const string CONFIGURATION_USE_SIGNATURE_HINT = $"{BASE_LOCALE_ENDPOINT}.Configuration.UseSignature.Hint";
+    
+    public const string CONFIGURATION_DESCRIPTION = $"{BASE_LOCALE_ENDPOINT}.Configuration.Description";
+    public const string CONFIGURATION_DESCRIPTION_HINT = $"{BASE_LOCALE_ENDPOINT}.Configuration.Description.Hint";
 
     #endregion
 
@@ -82,6 +85,8 @@ public class DefaultLocales
             [CONFIGURATION_API_PASSWORD_HINT] = "Enter your Flik API password here. This is required for authentication.",
             [CONFIGURATION_USE_SIGNATURE] = "Use Signature",
             [CONFIGURATION_USE_SIGNATURE_HINT] = "Check to use a signature for additional security. Uncheck if you do not want to use a signature.",
+            [CONFIGURATION_DESCRIPTION] = "Description",
+            [CONFIGURATION_DESCRIPTION_HINT] = "Message that will appear to the user in Flik.",
             [CONFIGURATION_ADDITIONAL_FEE_PERCENTAGE] = "Should the additional fee be a percentage?",
             [CONFIGURATION_ADDITIONAL_FEE_PERCENTAGE_HINT] = "Check to apply the additional fee as a percentage of the order total.",
             [CONFIGURATION_ADDITIONAL_FEE] = "Additional Fee",

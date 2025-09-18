@@ -37,6 +37,7 @@ public class ConfigurationFactory : IConfigurationFactory
             ApiUsername = settings.ApiUsername,
             ApiPassword = settings.ApiPassword,
             UseSignature = settings.UseSignature,
+            Description = settings.Description,
             AdditionalFeePercentage = settings.AdditionalFeePercentage,
             AdditionalFee = settings.AdditionalFee,
             RemoveSettingsOnUninstall = settings.RemoveSettingsOnUninstall,

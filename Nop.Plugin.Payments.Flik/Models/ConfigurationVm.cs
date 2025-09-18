@@ -51,6 +51,12 @@ public class ConfigurationVm
     /// </summary>
     [NopResourceDisplayName(DefaultLocales.CONFIGURATION_USE_SIGNATURE)]
     public bool UseSignature { get; set; }
+    
+    /// <summary>
+    /// Gets or sets the description to appear to the customer in Flik.
+    /// </summary>
+    [NopResourceDisplayName(DefaultLocales.CONFIGURATION_DESCRIPTION)]
+    public string Description { get; set; }
 
     /// <summary>
     /// Gets or sets whether the additional fee is in percentage.
