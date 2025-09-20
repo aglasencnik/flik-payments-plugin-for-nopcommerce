@@ -2,6 +2,10 @@
 
 Flik Payments integration for nopCommerce. Enables instant SEPA-based payments in Slovenia via the Flik platform.
 
+> [!WARNING]
+> This plugin is currently under active development and **not production-ready**.  
+> Use it only for testing, development, or experimentation — not in live environments.
+
 ## Support the Project
 
 If you find this project useful, consider supporting it by [buying me a coffee](https://www.buymeacoffee.com/aglasencnik). Your support is greatly appreciated!
