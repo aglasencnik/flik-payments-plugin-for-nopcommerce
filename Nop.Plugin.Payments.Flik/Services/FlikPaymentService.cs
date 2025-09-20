@@ -91,7 +91,7 @@ public class FlikPaymentService : IFlikPaymentService
     #region Methods
 
     /// <inheritdoc />
-    public async Task<DebitResponse> CreateRequestToPayAsync(Order order)
+    public async Task<(DebitResponse, string)> CreateRequestToPayAsync(Order order)
     {
         var customerCurrency = await _currencyService.GetCurrencyByCodeAsync(order.CustomerCurrencyCode);
         var euroCurrency = await _currencyService.GetCurrencyByCodeAsync("EUR");
@@ -144,7 +144,7 @@ public class FlikPaymentService : IFlikPaymentService
         if (!response.IsSuccessStatusCode)
             throw new Exception("Failed to create request to pay", new Exception(responseContent));
 
-        return JsonConvert.DeserializeObject<DebitResponse>(responseContent);
+        return (JsonConvert.DeserializeObject<DebitResponse>(responseContent), debitRequest.MerchantTransactionId);
     }
 
     #endregion

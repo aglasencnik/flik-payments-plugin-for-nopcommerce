@@ -9,5 +9,5 @@ namespace Nop.Plugin.Payments.Flik.Services;
 /// </summary>
 public interface IFlikPaymentService
 {
-    Task<DebitResponse> CreateRequestToPayAsync(Order order);
+    Task<(DebitResponse, string)> CreateRequestToPayAsync(Order order);
 }

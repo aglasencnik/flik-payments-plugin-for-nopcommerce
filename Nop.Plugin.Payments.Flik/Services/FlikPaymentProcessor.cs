@@ -27,6 +27,7 @@ public class FlikPaymentProcessor : IFlikPaymentProcessor
     private readonly IUrlHelperFactory _urlHelperFactory;
     private readonly ILogger _logger;
     private readonly IWebHelper _webHelper;
+    private readonly IOrderService _orderService;
 
     #endregion
 
@@ -40,7 +41,8 @@ public class FlikPaymentProcessor : IFlikPaymentProcessor
         ILocalizationService localizationService,
         IUrlHelperFactory urlHelperFactory,
         ILogger logger,
-        IWebHelper webHelper)
+        IWebHelper webHelper,
+        IOrderService orderService)
     {
         _flikPaymentSettings = flikPaymentSettings;
         _orderTotalCalculationService = orderTotalCalculationService;
@@ -51,6 +53,7 @@ public class FlikPaymentProcessor : IFlikPaymentProcessor
         _urlHelperFactory = urlHelperFactory;
         _logger = logger;
         _webHelper = webHelper;
+        _orderService = orderService;
     }
 
     #endregion
@@ -79,7 +82,18 @@ public class FlikPaymentProcessor : IFlikPaymentProcessor
         try
         {
             var order = postProcessPaymentRequest.Order;
-            var requestToPay = await _flikPaymentService.CreateRequestToPayAsync(order);
+            var (requestToPay, merchantId) = await _flikPaymentService.CreateRequestToPayAsync(order);
+
+            await _orderService.InsertOrderNoteAsync(new OrderNote
+            {
+                Note = $"UUID: {requestToPay.UUID}, PurchaseId: {requestToPay.PurchaseId}, MerchantId: {merchantId}",
+                DisplayToCustomer = false,
+                CreatedOnUtc = DateTime.UtcNow,
+                OrderId = order.Id,
+            });
+            
+            order.CaptureTransactionId = merchantId;
+            await _orderService.UpdateOrderAsync(order);
 
             var httpContext = _httpContextAccessor.HttpContext;
             httpContext?.Response.Redirect(requestToPay.RedirectUrl);
