@@ -53,6 +53,12 @@ public class DefaultLocales
 
     #endregion
 
+    #region Payment Notifications
+
+    public const string PAYMENT_PROCESS_NOT_STARTED_NOTIFICATION = $"{BASE_LOCALE_ENDPOINT}.Notifications.ProcessNotStartedNotification";
+
+    #endregion
+
     #endregion
 
     #region Methods
@@ -93,6 +99,9 @@ public class DefaultLocales
             [CONFIGURATION_ADDITIONAL_FEE_HINT] = "Specify the additional fee to be applied to the order total.",
             [CONFIGURATION_REMOVE_SETTINGS_ON_UNINSTALL] = "Remove settings on uninstall",
             [CONFIGURATION_REMOVE_SETTINGS_ON_UNINSTALL_HINT] = "Check to remove all settings related to the Flik Payments plugin when it is uninstalled.",
+            
+            // Payment Notifications
+            [PAYMENT_PROCESS_NOT_STARTED_NOTIFICATION] = "Payment process could not be started.",
         };
     }
 
