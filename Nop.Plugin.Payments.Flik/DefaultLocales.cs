@@ -55,7 +55,13 @@ public class DefaultLocales
 
     #region Payment Notifications
 
-    public const string PAYMENT_PROCESS_NOT_STARTED_NOTIFICATION = $"{BASE_LOCALE_ENDPOINT}.Notifications.ProcessNotStartedNotification";
+    public const string PAYMENT_PROCESS_NOT_STARTED_NOTIFICATION = $"{BASE_LOCALE_ENDPOINT}.Notifications.PaymentProcessNotStarted";
+    
+    public const string PAYMENT_SUCCESSFUL_NOTIFICATION = $"{BASE_LOCALE_ENDPOINT}.Notifications.PaymentSuccessful";
+    
+    public const string PAYMENT_FAILED_NOTIFICATION  = $"{BASE_LOCALE_ENDPOINT}.Notifications.PaymentFailed";
+    
+    public const string PAYMENT_CANCELED_NOTIFICATION = $"{BASE_LOCALE_ENDPOINT}.Notifications.PaymentCanceled";
 
     #endregion
 
@@ -102,6 +108,9 @@ public class DefaultLocales
             
             // Payment Notifications
             [PAYMENT_PROCESS_NOT_STARTED_NOTIFICATION] = "Payment process could not be started.",
+            [PAYMENT_SUCCESSFUL_NOTIFICATION] = "Your payment was successful!",
+            [PAYMENT_FAILED_NOTIFICATION] = "There was an error processing your payment.",
+            [PAYMENT_CANCELED_NOTIFICATION] = "Payment has been canceled.",
         };
     }
 

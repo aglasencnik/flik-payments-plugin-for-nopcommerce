@@ -24,5 +24,11 @@ public class RouteProvider : IRouteProvider
             pattern: "Plugins/FlikPayments/Callback",
             defaults: new { controller = "FlikWebhook", action = "WebhookHandler" }
         );
+
+        endpointRouteBuilder.MapControllerRoute(
+            name: $"{_prefix}.Redirect",
+            pattern: "Plugins/FlikPayments/Redirect",
+            defaults: new { controller = "FlikRedirect", action = "RedirectHandler" }
+        );
     }
 }

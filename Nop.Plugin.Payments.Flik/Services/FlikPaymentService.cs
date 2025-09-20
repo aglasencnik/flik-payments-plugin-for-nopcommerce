@@ -117,9 +117,9 @@ public class FlikPaymentService : IFlikPaymentService
             MerchantTransactionId = $"Flik-{transactionRequestDate:yyyyMMddHHmmss}-{Guid.NewGuid().ToString()[..5]}",
             Amount = Math.Round(amountInEuro, 2, MidpointRounding.AwayFromZero).ToString("0.00", CultureInfo.InvariantCulture),
             Currency = "EUR",
-            SuccessUrl = $"{storeUrl}Plugins/FlikPayments/Redirect?status=success?orderId={order.Id}",
-            ErrorUrl = $"{storeUrl}Plugins/FlikPayments/Redirect?status=error?orderId={order.Id}",
-            CancelUrl = $"{storeUrl}Plugins/FlikPayments/Redirect?status=cancel?orderId={order.Id}",
+            SuccessUrl = $"{storeUrl}Plugins/FlikPayments/Redirect?status=success&orderId={order.Id}",
+            ErrorUrl = $"{storeUrl}Plugins/FlikPayments/Redirect?status=error&orderId={order.Id}",
+            CancelUrl = $"{storeUrl}Plugins/FlikPayments/Redirect?status=cancel&orderId={order.Id}",
             CallbackUrl = $"{storeUrl}Plugins/FlikPayments/Callback?orderId={order.Id}",
             Description = _flikPaymentSettings.Description,
             Customer = new DebitRequest.RequestCustomer
