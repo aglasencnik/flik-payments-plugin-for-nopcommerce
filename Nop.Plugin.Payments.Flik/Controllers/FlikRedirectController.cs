@@ -41,7 +41,7 @@ public class FlikRedirectController : Controller
                 await _localizationService.GetResourceAsync(DefaultLocales.PAYMENT_SUCCESSFUL_NOTIFICATION)
             );
             
-            return RedirectToAction("Completed", "Checkout", new { orderId });
+            return RedirectToRoute("CheckoutCompleted", new { orderId });
         }
 
         if (status.Equals("cancel", StringComparison.OrdinalIgnoreCase))
