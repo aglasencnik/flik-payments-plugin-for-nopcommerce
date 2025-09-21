@@ -142,7 +142,7 @@ public class FlikPaymentService : IFlikPaymentService
         var responseContent = await response.Content.ReadAsStringAsync();
 
         if (!response.IsSuccessStatusCode)
-            throw new Exception("Failed to create request to pay", new Exception(responseContent));
+            throw new NopException("Failed to create request to pay", new NopException(responseContent));
 
         return (JsonConvert.DeserializeObject<DebitResponse>(responseContent), debitRequest.MerchantTransactionId);
     }
