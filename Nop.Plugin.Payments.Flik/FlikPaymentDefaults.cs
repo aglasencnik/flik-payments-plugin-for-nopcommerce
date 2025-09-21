@@ -10,6 +10,8 @@ public static class FlikPaymentDefaults
     public static readonly string ViewsPath = $"~/Plugins/{SystemName}/Views";
     
     public static readonly string AdminViewsPath = $"{ViewsPath}/Admin";
+    
+    public static readonly string PublicViewsPath = $"{ViewsPath}/Public";
 
     public static readonly string[] AllowedCountries = { "SI" };
 
